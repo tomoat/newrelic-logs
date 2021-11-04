@@ -1,0 +1,27 @@
+{
+  "name": "newrelic-logs",
+  "version": "1.0.0",
+  "description": "Send logs to new relic ",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "new-relic",
+    "monitoring"
+  ],
+  "author": "tomoat <ljc6qx@163.com>",
+  "license": "MIT",
+  "dependencies": {
+    "newrelic": "^8.5.0",
+    "node-fetch": "^3.0.0",
+    "winston-transport": "^4.4.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0"
+  }
+}
