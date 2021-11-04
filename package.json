@@ -1,5 +1,5 @@
 {
-  "name": "newrelic-logs",
+  "name": "newrelic-winston",
   "version": "1.0.0",
   "description": "Send logs to new relic ",
   "main": "lib/index.js",
