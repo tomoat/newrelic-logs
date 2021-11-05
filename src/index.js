@@ -1,6 +1,6 @@
-import Transport from 'winston-transport'
-import newrelic from 'newrelic'
-import fetch from 'node-fetch'
+const Transport = require('winston-transport')
+const newrelic = require('newrelic')
+const axios = require('axios')
 
 /**
  * Class for sending logging information to Newrelic's HTTPS intakes
@@ -58,20 +58,18 @@ class NewrelicTransport extends Transport {
           ...traceData
       }
 
-      const config = {
+      const options = {
+          url: this.apiUrl,
           method: 'POST',
           headers: {
               'Content-Type': "application/json",
               'X-License-Key': this.apiKey
           },
-          body: JSON.stringify(requestBody)
+          data: requestBody
       }
 
-      const response = await fetch(this.apiUrl, config)
-      if (!response.ok) throw Error(response.message);
-
-      // const data = await response.json();
-      // return data;
+      const response = await axios(options)
+      if (!response.status === 202) throw Error(response.message);
     } catch (err) {
       console.log(`Error clear log in new-relic ${this.appName}: ${error}`);
     } finally {
@@ -80,4 +78,4 @@ class NewrelicTransport extends Transport {
   }
 }
 
-export default NewrelicTransport
+module.exports = NewrelicTransport

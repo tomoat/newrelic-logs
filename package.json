@@ -1,6 +1,6 @@
 {
   "name": "newrelic-winston-log",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "description": "Send logs to new relic ",
   "main": "lib/index.js",
   "scripts": {
@@ -15,13 +15,14 @@
   "author": "tomoat <ljc6qx@163.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.24.0",
     "newrelic": "^8.5.0",
-    "node-fetch": "^3.0.0",
     "winston-transport": "^4.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.16.0"
+    "@babel/preset-env": "^7.16.0",
+    "winston": "^3.3.3"
   }
 }
