@@ -1,12 +1,12 @@
-const Transport = require('winston-transport')
-const newrelic = require('newrelic')
-const fetch = require('node-fetch')
+import Transport from 'winston-transport'
+import newrelic from 'newrelic'
+import fetch from 'node-fetch'
 
 /**
  * Class for sending logging information to Newrelic's HTTPS intakes
  * @extends Transport
  */
-module.exports = class NewrelicTransport extends Transport {
+class NewrelicTransport extends Transport {
   /**
    * Constructor for the Newrelic Transport responsible for making
    * HTTP requests whenever log messages are received
@@ -21,9 +21,9 @@ module.exports = class NewrelicTransport extends Transport {
       throw new Error('Missing required option: `apiKey`')
     }
     if (opts.intakeRegion === 'eu') {
-      this.api = `https://log-api.eu.newrelic.com/log/v1`
+      this.apiUrl = `https://log-api.eu.newrelic.com/log/v1`
     } else {
-      this.api = `https://log-api.newrelic.com/log/v1/${opts.apiKey}`
+      this.apiUrl = `https://log-api.newrelic.com/log/v1`
     }
     this.apiKey = opts.apiKey || process.env.NEW_RELIC_LICENSE_KEY
     this.appName = opts.appName || process.env.NEW_RELIC_APP_NAME
@@ -67,7 +67,7 @@ module.exports = class NewrelicTransport extends Transport {
           body: JSON.stringify(requestBody)
       }
 
-      const response = await fetch(this.api, config)
+      const response = await fetch(this.apiUrl, config)
       if (!response.ok) throw Error(response.message);
 
       // const data = await response.json();
@@ -79,3 +79,5 @@ module.exports = class NewrelicTransport extends Transport {
     }
   }
 }
+
+export default NewrelicTransport
