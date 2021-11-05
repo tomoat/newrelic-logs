@@ -34,6 +34,9 @@ const NewrelicTransport = require('newrelic-winston')
 const logger = createLogger({
   // Whatever options you need
   // Refer https://github.com/winstonjs/winston#creating-your-own-logger
+  // transports: [
+  //   new NewrelicTransport(options),
+  // ],
 })
 
 if (process.env.NODE_ENV !== 'production') {
