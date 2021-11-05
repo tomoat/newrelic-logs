@@ -4,11 +4,11 @@ NewRelic logs is a NodeJS library for send winston logs to newrelic
 
 ## Install
 ```console
-$ npm i newrelic-winston -S
+$ npm i newrelic-winston-log -S
 ```
 or
 ```console
-$ yarn add newrelic-winston
+$ yarn add newrelic-winston-log
 ```
 
 ## Options
@@ -28,7 +28,7 @@ process.env.NEW_RELIC_APP_NAME =  'my-app-name'
 ## Usage
 ```javascript
 const { createLogger } = require('winston')
-const NewrelicTransport = require('newrelic-winston')
+const NewrelicTransport = require('newrelic-winston-log')
 
 // Create a logger and consume an instance of your transport
 const logger = createLogger({
