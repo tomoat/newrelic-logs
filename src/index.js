@@ -70,7 +70,7 @@ class NewrelicTransport extends Transport {
 
       const response = await axios(options)
       if (!response.status === 202) throw Error(response.message);
-    } catch (err) {
+    } catch (error) {
       console.log(`Error clear log in new-relic ${this.appName}: ${error}`);
     } finally {
       callback()
