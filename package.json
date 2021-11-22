@@ -1,6 +1,6 @@
 {
   "name": "newrelic-winston-log",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Send logs to new relic ",
   "main": "lib/index.js",
   "scripts": {
